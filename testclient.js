@@ -1,49 +1,35 @@
-//require a few things.
+var request = require('request');
 
-var http = require('http'),
-    qs = require('qs');
+var postMe1 = {
+        'drink': 'coke',
+        'drinker': 'fatguy'
+    }
+var postMe2 = new postMe1();
+postMe2.drink = 'pepsi'
 
-//These are the post options
-var options = {
-  hostname: 'www.mysite.com',
-  port: 80,
-  path: '/auth',
-  method: 'POST'
+var cokebody = JSON.stringify(postMe);
+var pepbody = JSON.stringify(postMe);
+
+//two different options
+var options1 = {
+    url: 'http://jayryoo1.devstack.sfdc-matrix.net:3000/streams/hr/event?by=name',
+    body: cokebody
 };
-//The postdata can be anything, but I'm using querystring 
-//to convert it into the format 
-//username=User&password=Password to be easily parsed in php
 
-var postdata = qs.stringify({
-    username:"User",
-    password:"Password"
-});
-
-//Initialise the variable that will store the response
-var body='';
+var options2 = {
+    url: 'http://jayryoo1.devstack.sfdc-matrix.net:3000/streams/hr/event?by=name',
+    body: pepbody
+};
 
 
-//Now we're going to set up the request and the callbacks to handle the data
-var request = http.request(options, function(response) {
-    //When we receive data, we want to store it in a string
-    response.on('data', function (chunk) {
-        body += chunk;
-    });
-    //On end of the request, run what we need to
-    response.on('end',function() {
-        //Do Something with the data
-        console.log(body);
-    });
-});
+function callback(error, response, body) {
+    if (!error) {
+        console.log('congrats you didnt get an error braj');
+    }
+    console.log('y\'get this text whether you error or not');
+}
 
-//Now we need to set up the request itself. 
-//This is a simple sample error function
-request.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
-});
-
-
-//Write our post data to the request
-request.write(postdata);
-//End the request.
-request.end();
+for( int i = 0; i<10; ++ i)
+{
+  request.post(options, callback);
+}
