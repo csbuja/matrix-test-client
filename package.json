@@ -1,0 +1,30 @@
+{
+  "name": "matrixTestClient",
+  "version": "0.0.0",
+  "description": "test the matrix. it has u",
+  "main": "testclient.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "node-statsd": "0.0.7",
+    "q": "^1.0.1",
+    "request": "^2.36.0"
+  },
+  "devDependencies": {
+    "getopt": "^0.1.0",
+    "node-getopt": "^0.2.3",
+    "q": "^1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csbuja/matrix-test-client.git"
+  },
+  "author": "DaBuj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csbuja/matrix-test-client/issues"
+  },
+  "homepage": "https://github.com/csbuja/matrix-test-client"
+}
